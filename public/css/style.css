@@ -1,0 +1,44 @@
+.site-header {
+    position: fixed;
+    top: 0;
+    left: auto;
+    z-index: 1050; /* 保持在最上層 */
+    /*background: #ffffffcc;*/
+    backdrop-filter: blur(8px);
+  }
+
+  .navbar {
+    font-family: "Noto Sans TC", "Yu Gothic", sans-serif;
+    transition: background-color 0.3s ease;
+}
+  
+  .navbar-brand {
+    font-size: 1rem;
+    letter-spacing: 1px; /* 更有日系印刷感 */
+    color: #222;
+  }
+  
+  .nav-link {
+    color: #555;
+    font-weight: 400;
+  }
+  
+  .nav-link:hover {
+    color: #C73E3E; /* 楓葉紅 - hover 點綴 */
+  }
+  
+  .btn-outline-dark {
+    border-radius: 20px;
+  }
+
+  /* 日文字 (光の間) */
+.navbar-brand span {
+    color: #8B5A3C;   /* 深灰、日系常用 */
+}
+
+/* 英文字 (Hikari Photography) */
+.navbar-brand small {
+    color: #8B5A3C;   /* 淺灰、低調質感 */
+}
+
+  
