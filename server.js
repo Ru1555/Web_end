@@ -1,98 +1,97 @@
-var express = require("express");
-var server = express();
-var bodyParser = require("body-parser");
+// server.js
+const express = require('express');
+const sqlite3 = require('sqlite3').verbose();
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+const cors = require('cors');
 
+const app = express();
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-server.set("view engine", 'ejs');
-server.set("views", __dirname+"/view")
+const PUBLIC_DIR = path.join(__dirname, 'public');
+const UPLOAD_DIR = path.join(PUBLIC_DIR, 'uploads');
+const DB_FILE = path.join(__dirname, 'data', 'photos.db');
 
-var fileUpload = require("express-fileupload");
+if (!fs.existsSync(UPLOAD_DIR)) fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+if (!fs.existsSync(path.dirname(DB_FILE))) fs.mkdirSync(path.dirname(DB_FILE), { recursive: true });
 
-server.use(express.static(__dirname + "/Public"));
-server.use(bodyParser.urlencoded());
-server.use(bodyParser.json());
-server.use(fileUpload({limits:{fileSize:2*1024*1024}}))
+const db = new sqlite3.Database(DB_FILE);
+db.serialize(() => {
+  db.run(`CREATE TABLE IF NOT EXISTS photos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT,
+    filename TEXT NOT NULL,
+    caption TEXT,
+    alt TEXT,
+    width INTEGER,
+    height INTEGER,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    "order" INTEGER DEFAULT 0
+  )`);
+});
 
-var DB=require("nedb-promises");
-var ServiceDB = DB.create(__dirname+"/Service.db");
-var PorfolioDB = DB.create(__dirname+"/Porfolio.db");
-var ContactDB = DB.create(__dirname+"/Contact.db");
-// ServiceDB.insert([
-//         { icon: 'fa-shopping-cart', title: 'E-Commerce', text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur porro laborum fuga repellat necessitatibus corporis nulla, in ex velit recusandae obcaecati maiores, doloremque quisquam similique, tempora aspernatur eligendi delectus! Rem.' },
-//         { icon: 'fa-laptop', title: 'Responsive Design', text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.' },
-//         { icon: 'fa-lock', title: 'Web Security', text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.' }
-//     ])
-//  PorfolioDB.insert( [
-//         { href: "#portfolioModal1", imgSrc: "img/portfolio/roundicons.png", title: "Round Icons", text: "Graphic Design" },
-//         { href: "#portfolioModal2", imgSrc: "img/portfolio/startup-framework.png", title: "Startup Framework", text: "Website Design" },
-//         { href: "#portfolioModal3", imgSrc: "img/portfolio/treehouse.png", title: "Treehouse", text: "Website Design" },
-//         { href: "#portfolioModal1", imgSrc: "img/portfolio/roundicons.png", title: "Round Icons", text: "Graphic Design" },
-//         { href: "#portfolioModal2", imgSrc: "img/portfolio/startup-framework.png", title: "Startup Framework", text: "Website Design" },
-//         { href: "#portfolioModal3", imgSrc: "img/portfolio/treehouse.png", title: "Treehouse", text: "Website Design" }
-//     ])
+// 靜態檔
+app.use('/', express.static(PUBLIC_DIR));
 
-server.get("/", (req, res) => {
-    res.send("Hello world!");
-})
-server.get("/services", (req, res) => {
-    //db 
-    // var Services = [
-    //     { icon: 'fa-shopping-cart', title: 'E-Commerce', text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur porro laborum fuga repellat necessitatibus corporis nulla, in ex velit recusandae obcaecati maiores, doloremque quisquam similique, tempora aspernatur eligendi delectus! Rem.' },
-    //     { icon: 'fa-laptop', title: 'Responsive Design', text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.' },
-    //     { icon: 'fa-lock', title: 'Web Security', text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.' }
-    // ]
-    ServiceDB.find({},{_id:0}).then(results=>{
-       
-        res.send(results);
-    }).catch(error=>{
+// 上傳設定（multer）
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, UPLOAD_DIR),
+  filename: (req, file, cb) => {
+    const safe = Date.now() + '-' + file.originalname.replace(/\s+/g, '_');
+    cb(null, safe);
+  }
+});
+const upload = multer({ storage });
 
-    })
-    
-})
+// API: 取得全部照片（JSON）
+app.get('/api/photos', (req, res) => {
+  db.all('SELECT * FROM photos ORDER BY "order" ASC, created_at DESC', [], (err, rows) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(rows);
+  });
+});
 
-server.get("/portfolio", (req, res) => {
-    // var Portfolio = [
-    //     { href: "#portfolioModal1", imgSrc: "img/portfolio/roundicons.png", title: "Round Icons", text: "Graphic Design" },
-    //     { href: "#portfolioModal2", imgSrc: "img/portfolio/startup-framework.png", title: "Startup Framework", text: "Website Design" },
-    //     { href: "#portfolioModal3", imgSrc: "img/portfolio/treehouse.png", title: "Treehouse", text: "Website Design" },
-    //     { href: "#portfolioModal1", imgSrc: "img/portfolio/roundicons.png", title: "Round Icons", text: "Graphic Design" },
-    //     { href: "#portfolioModal2", imgSrc: "img/portfolio/startup-framework.png", title: "Startup Framework", text: "Website Design" },
-    //     { href: "#portfolioModal3", imgSrc: "img/portfolio/treehouse.png", title: "Treehouse", text: "Website Design" }
-    // ]
-    PorfolioDB.find({}).then(results=>{
-        res.send(results);
-    })
-    
-})
+// API: 取得單張（可用於 metadata）
+app.get('/api/photos/:id', (req, res) => {
+  db.get('SELECT * FROM photos WHERE id = ?', [req.params.id], (err, row) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(row);
+  });
+});
 
+// API: 上傳照片（multipart/form-data） - for admin
+app.post('/api/upload', upload.single('photo'), (req, res) => {
+  if (!req.file) return res.status(400).json({ error: 'No file' });
+  const { title = '', caption = '', alt = '' } = req.body;
+  const filename = path.basename(req.file.path);
+  // 儲存基本資料（略過 width/height：可用 sharp 取得，但為了簡潔先不加）
+  db.run(
+    `INSERT INTO photos (title, filename, caption, alt) VALUES (?, ?, ?, ?)`,
+    [title, filename, caption, alt],
+    function (err) {
+      if (err) return res.status(500).json({ error: err.message });
+      res.json({ success: true, id: this.lastID, filename });
+    }
+  );
+});
 
-server.get("/showServices",(req,res)=>{
-    ServiceDB.find({},{_id:0}).then(results=>{
-       
-        res.render("service",{Services:results});
-    }).catch(error=>{
+// API: 刪除（簡單範例）
+app.delete('/api/photos/:id', (req, res) => {
+  db.get('SELECT filename FROM photos WHERE id = ?', [req.params.id], (err, row) => {
+    if (err) return res.status(500).json({ error: err.message });
+    if (!row) return res.status(404).json({ error: 'Not found' });
+    const file = path.join(UPLOAD_DIR, row.filename);
+    fs.unlink(file, () => {
+      db.run('DELETE FROM photos WHERE id = ?', [req.params.id], (err2) => {
+        if (err2) return res.status(500).json({ error: err2.message });
+        res.json({ success: true });
+      });
+    });
+  });
+});
 
-    })
-
-})
-
-server.get("/about", (req, res) => {
-    res.send("Welcome " + req.query.user + " to My first NodeJS server!");
-})
-
-
-server.post("/contact", (req, res) =>{
-    ContactDB.insert(req.body);
-    //move to public/upload
-    var upFile=req.files.myFile1;
-    upFile.mv(__dirname+"/public/upload/"+upFile.name, function(err){
-        if(err==null){
-            res.render("msg",{message:"I got a file: "+upFile.name})
-        }else{
-            res.render("msg",{message:err});
-        }
-    })
-})
-
-
-server.listen(80)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server started on http://localhost:${PORT}`));
