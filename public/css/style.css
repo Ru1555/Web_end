@@ -63,9 +63,9 @@
   font-weight: 500;
   color: #555;
   border: 1px solid #ddd;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  border-radius: 10px;
+  width: 50px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,14 +88,51 @@
 .modal-content img {
   width: 100%;
   max-width: 400px;
-  border-radius: 10px; /* 圓角 */
+  border-radius: 45px; /* 圓角 */
   display: block;
   margin: 0 auto;     /* 圖片置中 */
 }
 
 .modal-content p {
   text-align: center;      /* 文字置中 */
-  font-size: 30px;         /* 調整字體大小 */
+  font-size: 20px;         /* 調整字體大小 */
   margin-top: 20px;        /* 與上方圖片拉開距離 */
   line-height: 2;        /* 行距更舒適 */
+}
+
+/* ---- 背景區域設定 ---- */
+.bg-area {
+  position: relative;
+  min-height: 100vh;
+  background: url("uploads/leaf.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* 柔霧淡色遮罩 */
+.bg-area::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.3);
+  z-index: 1;
+}
+
+/* 內容置於遮罩之上 */
+.bg-area > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* 首頁文字區塊 */
+.home-content {
+  padding-top: 180px; /* 讓內容不被Navbar遮住 */
+}
+
+/* 楓葉樣式 */
+.leaf {
+  position: fixed;
+  top: -50px;
+  width: 40px;
+  pointer-events: none;
+  z-index: 3;
 }
