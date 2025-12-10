@@ -28,7 +28,7 @@
   }
   
   .btn-outline-dark {
-    border-radius: 20px;
+    border-radius: 30px;
   }
 
   /* 日文字 (光の間) */
@@ -79,4 +79,23 @@
   color: #000;
 }
 
-  
+/* QR Code */
+.modal-content {
+  text-align: center;      /* 文字置中 */
+  padding: 20px;           /* 增加內距離，讓文字不要貼邊 */
+}
+
+.modal-content img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px; /* 圓角 */
+  display: block;
+  margin: 0 auto;     /* 圖片置中 */
+}
+
+.modal-content p {
+  text-align: center;      /* 文字置中 */
+  font-size: 30px;         /* 調整字體大小 */
+  margin-top: 20px;        /* 與上方圖片拉開距離 */
+  line-height: 2;        /* 行距更舒適 */
+}
