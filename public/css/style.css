@@ -15,7 +15,7 @@
   .navbar-brand {
     font-size: 1rem;
     letter-spacing: 1px; /* 更有日系印刷感 */
-    color: #222;
+    color: inherit;
   }
   
   .nav-link {
@@ -39,6 +39,44 @@
 /* 英文字 (Hikari Photography) */
 .navbar-brand small {
     color: #8B5A3C;   /* 淺灰、低調質感 */
+}
+
+.brand-chinese {
+  color: #1A1A1A;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.brand-chinese .maple {
+  color: #C73E3E;
+}
+
+.brand-english {
+  color: #7A7A7A;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+/* QR Code button style */
+.qr-link {
+  font-weight: 500;
+  color: #555;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  transition: 0.25s ease;
+  margin-left: 8px;
+}
+
+.qr-link:hover {
+  background-color: #eee;
+  color: #000;
 }
 
   
