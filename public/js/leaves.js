@@ -15,4 +15,14 @@ function createLeaf() {
     });
 }
 
+//QR Code 顯示
+function showQR() {
+    document.getElementById("qrModal").classList.add("active");
+}
+
+function closeQR() {
+    document.getElementById("qrModal").classList.remove("active");
+}
+
+
 setInterval(createLeaf, 1200);

@@ -1,44 +1,42 @@
+/* ------------------- Navbar ------------------- */
 .site-header {
-    position: fixed;
-    top: 0;
-    left: auto;
-    z-index: 1050; /* 保持在最上層 */
-    /*background: #ffffffcc;*/
-    backdrop-filter: blur(8px);
-  }
-
-  .navbar {
-    font-family: "Noto Sans TC", "Yu Gothic", sans-serif;
-    transition: background-color 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: auto;
+  z-index: 1050; /* 保持在最上層 */
+  backdrop-filter: blur(8px);
 }
-  
-  .navbar-brand {
-    font-size: 1rem;
-    letter-spacing: 1px; /* 更有日系印刷感 */
-    color: inherit;
-  }
-  
-  .nav-link {
-    color: #555;
-    font-weight: 400;
-  }
-  
-  .nav-link:hover {
-    color: #C73E3E; /* 楓葉紅 - hover 點綴 */
-  }
-  
-  .btn-outline-dark {
-    border-radius: 30px;
-  }
 
-  /* 日文字 (光の間) */
+.navbar {
+  font-family: "Noto Sans TC", "Yu Gothic", sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-brand {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: inherit;
+}
+
+.nav-link {
+  color: #555;
+  font-weight: 400;
+}
+
+.nav-link:hover {
+  color: #C73E3E;
+}
+
+.btn-outline-dark {
+  border-radius: 30px;
+}
+
 .navbar-brand span {
-    color: #8B5A3C;   /* 深灰、日系常用 */
+  color: #8B5A3C;
 }
 
-/* 英文字 (Hikari Photography) */
 .navbar-brand small {
-    color: #8B5A3C;   /* 淺灰、低調質感 */
+  color: #8B5A3C;
 }
 
 .brand-chinese {
@@ -58,7 +56,7 @@
   line-height: 1;
 }
 
-/* QR Code button style */
+/* ------------------- QR Code Button ------------------- */
 .qr-link {
   font-weight: 500;
   color: #555;
@@ -79,56 +77,85 @@
   color: #000;
 }
 
-/* QR Code */
+/* ------------------- QR Code Modal ------------------- */
+.modal {
+  display: none; /* 預設隱藏 */
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background-color: rgba(128,128,128,0.8); /* 背景整個灰色半透明 */
+  justify-content: center; /* 置中內容 */
+  align-items: center;
+}
+
+.modal.active {
+  display: flex; /* 顯示 modal */
+}
+
 .modal-content {
-  text-align: center;      /* 文字置中 */
-  padding: 20px;           /* 增加內距離，讓文字不要貼邊 */
+  background-color: #fff; /* 白色內容框 */
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .modal-content img {
   width: 100%;
-  max-width: 400px;
-  border-radius: 45px; /* 圓角 */
+  border-radius: 15px;
   display: block;
-  margin: 0 auto;     /* 圖片置中 */
+  margin: 0 auto;
 }
 
 .modal-content p {
-  text-align: center;      /* 文字置中 */
-  font-size: 20px;         /* 調整字體大小 */
-  margin-top: 20px;        /* 與上方圖片拉開距離 */
-  line-height: 2;        /* 行距更舒適 */
+  margin-top: 20px;
+  font-size: 20px;
+  line-height: 1.8;
+  color: #333;
 }
 
-/* ---- 背景區域設定 ---- */
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  color: #555;
+  cursor: pointer;
+}
+
+/* ------------------- 背景區域 ------------------- */
 .bg-area {
   position: relative;
   min-height: 100vh;
-  background: url("uploads/leaf.jpg") no-repeat center center fixed;
+  background: url("../uploads/shine.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
-/* 柔霧淡色遮罩 */
 .bg-area::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.2); /* 柔霧淡色遮罩 */
   z-index: 1;
 }
 
-/* 內容置於遮罩之上 */
 .bg-area > * {
   position: relative;
   z-index: 2;
 }
 
-/* 首頁文字區塊 */
+/* ------------------- 首頁文字 ------------------- */
 .home-content {
-  padding-top: 180px; /* 讓內容不被Navbar遮住 */
+  padding-top: 250px; /* 避免被 Navbar 遮住 */
 }
 
-/* 楓葉樣式 */
+.home-content h1,
+.home-content p {
+  text-shadow: 0 3px 6px rgba(0,0,0,0.35);
+}
+
+/* ------------------- 楓葉 ------------------- */
 .leaf {
   position: fixed;
   top: -50px;
