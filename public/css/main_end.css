@@ -155,11 +155,21 @@
   text-shadow: 0 3px 6px rgba(0,0,0,0.35);
 }
 
-/* ------------------- 楓葉 ------------------- */
+/* 楓葉 */
 .leaf {
   position: fixed;
   top: -50px;
   width: 40px;
   pointer-events: none;
   z-index: 3;
+}
+
+/* Bootstrap Modal 全畫面灰色背景 */
+.modal-backdrop.show {
+  background-color: rgba(120, 120, 120, 0.85);
+}
+
+/* Modal */
+.modal {
+  z-index: 9999;
 }
