@@ -24,5 +24,4 @@ function closeQR() {
     document.getElementById("qrModal").classList.remove("active");
 }
 
-
 setInterval(createLeaf, 1200);
