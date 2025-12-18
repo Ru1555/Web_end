@@ -1,0 +1,111 @@
+.site-header {
+    position: fixed;
+    top: 0;
+    left: auto;
+    z-index: 1050;
+    backdrop-filter: blur(8px);
+  }
+  
+  .navbar {
+    font-family: "Noto Sans TC", "Yu Gothic", sans-serif;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbar-brand {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: inherit;
+  }
+  
+  .nav-link {
+    color: #555;
+    font-weight: 400;
+  }
+  
+  .nav-link:hover {
+    color: #C73E3E;
+  }
+  
+  .qr-link {
+    font-weight: 500;
+    color: #555;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 50px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    transition: 0.25s ease;
+    margin-left: 8px;
+  }
+  
+  .qr-link:hover {
+    background-color: #eee;
+    color: #000;
+  }
+  
+  /* =========================
+     Gallery Page - Works
+     ========================= */
+  
+  /* 秋天咖啡色系 */
+  :root {
+    --bg-coffee: #3B2A23;
+    --text-main: #F5F1EE;
+    --text-sub: #C8B8AD;
+    --border-soft: rgba(255,255,255,0.25);
+  }
+  
+  /* 整頁背景 */
+  .gallery-page {
+    background-color: var(--bg-coffee);
+    color: var(--text-main);
+    min-height: 100vh;
+  }
+  
+  /* Hero 區 */
+  .gallery-page .works-hero {
+    padding-top: 160px;
+    padding-bottom: 80px;
+  }
+  
+  .gallery-page .works-hero h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 800;
+    line-height: 1;
+  }
+  
+  .gallery-page .works-hero h1 span {
+    color: #E3B26F;
+  }
+  
+  .gallery-page .works-desc {
+    margin-top: 24px;
+    color: var(--text-sub);
+    max-width: 480px;
+  }
+  
+  /* 分類圓框 */
+  .gallery-page .works-filter {
+    display: flex;
+    gap: 14px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .gallery-page .works-filter button {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border-soft);
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  
+  /* 作品區 */
+  .gallery-page .works-grid {
+    padding-bottom: 120px;
+  }
+  
