@@ -1,50 +1,61 @@
+/* ------------------- Navbar ------------------- */
 .site-header {
-    position: fixed;
-    top: 0;
-    left: auto;
-    z-index: 1050;
-    backdrop-filter: blur(8px);
-  }
-  
-  .navbar {
-    font-family: "Noto Sans TC", "Yu Gothic", sans-serif;
-    transition: background-color 0.3s ease;
-  }
-  
-  .navbar-brand {
-    font-size: 1rem;
-    letter-spacing: 1px;
-    color: inherit;
-  }
-  
-  .nav-link {
-    color: #555;
-    font-weight: 400;
-  }
-  
-  .nav-link:hover {
-    color: #C73E3E;
-  }
-  
-  .qr-link {
-    font-weight: 500;
-    color: #555;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    width: 50px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    transition: 0.25s ease;
-    margin-left: 8px;
-  }
-  
-  .qr-link:hover {
-    background-color: #eee;
-    color: #000;
-  }
+  position: fixed;
+  top: 0;
+  left: auto;
+  z-index: 1050; /* 保持在最上層 */
+  backdrop-filter: blur(8px);
+}
+
+.navbar {
+  font-family: "Noto Sans TC", "Yu Gothic", sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-brand {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: inherit;
+}
+
+.nav-link {
+  color: #555;
+  font-weight: 400;
+}
+
+.nav-link:hover {
+  color: #C73E3E;
+}
+
+.btn-outline-dark {
+  border-radius: 30px;
+}
+
+.navbar-brand span {
+  color: #8B5A3C;
+}
+
+.navbar-brand small {
+  color: #8B5A3C;
+}
+
+.brand-chinese {
+  color: #1A1A1A;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.brand-chinese .maple {
+  color: #C73E3E;
+}
+
+.brand-english {
+  color: #7A7A7A;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
   
   /* =========================
      Gallery Page - Works
@@ -86,26 +97,146 @@
     color: var(--text-sub);
     max-width: 480px;
   }
-  
-  /* 分類圓框 */
-  .gallery-page .works-filter {
-    display: flex;
-    gap: 14px;
-    margin-top: 40px;
-    flex-wrap: wrap;
-  }
-  
-  .gallery-page .works-filter button {
-    background: transparent;
-    color: var(--text-main);
-    border: 1px solid var(--border-soft);
-    border-radius: 999px;
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-  
-  /* 作品區 */
-  .gallery-page .works-grid {
-    padding-bottom: 120px;
-  }
+
+/* ===== 分類按鈕 ===== */
+
+.works-filter {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+/* 按鈕本體 */
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  padding: 14px 28px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  text-align: center;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+/* 標題 */
+.filter-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--text-main);
+}
+
+/* 描述 */
+.filter-desc {
+  font-size: 0.65rem;
+  color: var(--text-sub);
+  line-height: 1.4;
+}
+
+/* hover */
+.filter-btn:hover {
+  border-color: #fff;
+}
+
+.filter-btn:hover .filter-desc {
+  color: #fff;
+}
+
+/* active 狀態 */
+.filter-btn.active {
+  border-color: #fff;
+}
+
+.filter-btn.active .filter-title,
+.filter-btn.active .filter-desc {
+  color: #fff;
+}
+
+/* ===== 作品區 ===== */
+
+.works-grid {
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+/* ===== 作品 Grid ===== */
+
+.works-grid {
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 32px;
+}
+
+/* 單張作品 */
+.work-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+
+  display: none; /* 由 JS 控制顯示 */
+  background-color: #111;
+}
+
+/* 顯示狀態 */
+.work-item.show {
+  display: block;
+}
+
+/* 圖片 */
+.work-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  transition: transform 0.6s ease;
+}
+
+/* hover 放大一點點 */
+.work-item:hover img {
+  transform: scale(1.05);
+}
+
+/* 作品資訊（預設隱藏） */
+.work-info {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0)
+  );
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* hover 顯示文字 */
+.work-item:hover .work-info {
+  opacity: 1;
+}
+
+/* 標題 */
+.work-title {
+  font-size: 0.8rem;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+
   
