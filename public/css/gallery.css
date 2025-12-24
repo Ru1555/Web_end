@@ -159,16 +159,7 @@
   color: #fff;
 }
 
-/* ===== 作品區 ===== */
-
-.works-grid {
-  margin-top: 80px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 24px;
-}
-
-/* ===== 作品 Grid ===== */
+/* ===== 作品 Grid（自然比例） ===== */
 
 .works-grid {
   margin-top: 80px;
@@ -183,38 +174,36 @@
   overflow: hidden;
   border-radius: 16px;
 
-  display: none; /* 由 JS 控制顯示 */
+  display: none; /* JS 控制 */
   background-color: #111;
 }
 
-/* 顯示狀態 */
+/* 顯示 */
 .work-item.show {
   display: block;
 }
 
-/* 圖片 */
+/* 圖片：保留原比例 */
 .work-item img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;        
   display: block;
-
-  transition: transform 0.6s ease;
 }
 
-/* hover 放大一點點 */
+/* hover 微放大（很克制） */
 .work-item:hover img {
-  transform: scale(1.05);
+  transform: scale(1.03);
+  transition: transform 0.5s ease;
 }
 
-/* 作品資訊（預設隱藏） */
+/* 文字遮罩 */
 .work-info {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
-  display: flex;
-  align-items: flex-end;
-  padding: 16px;
+  padding: 14px 16px;
 
   background: linear-gradient(
     to top,
@@ -226,17 +215,16 @@
   transition: opacity 0.3s ease;
 }
 
-/* hover 顯示文字 */
 .work-item:hover .work-info {
   opacity: 1;
 }
 
-/* 標題 */
 .work-title {
   font-size: 0.8rem;
   color: #fff;
   letter-spacing: 1px;
 }
+
 
 
   
