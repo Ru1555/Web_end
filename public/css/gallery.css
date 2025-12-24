@@ -190,7 +190,7 @@
   display: block;
 }
 
-/* hover 微放大（很克制） */
+/*hover*/
 .work-item:hover img {
   transform: scale(1.03);
   transition: transform 0.5s ease;
