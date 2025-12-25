@@ -166,7 +166,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 32px;
+
+  align-items: start; /* 自動調整，按照圖片直橫 */
 }
+
 
 /* 單張作品 */
 .work-item {
@@ -224,6 +227,8 @@
   color: #fff;
   letter-spacing: 1px;
 }
+
+
 
 
 

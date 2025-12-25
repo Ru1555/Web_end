@@ -20,5 +20,6 @@ filterButtons.forEach(btn => {
   });
 });
 
+
 // 預設顯示第一類
 document.querySelector('.filter-btn.active')?.click();
