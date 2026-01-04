@@ -6,19 +6,19 @@
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="css/main_end.css">
   <link rel="stylesheet" href="css/gallery.css">
 </head>
 
-<!-- 作品圖片 Modal -->
-<div class="modal fade" id="imageModal" tabindex="-1">
+<!-- 作品放大 Modal -->
+<div class="modal fade" id="workModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content bg-dark border-0">
-      <div class="modal-body p-0 text-center">
-        <img id="modalImage" src="" class="img-fluid" alt="">
-      </div>
+    <div class="modal-content text-center p-4 bg-dark text-white">
+      <img id="modalImage" src="" class="img-fluid mb-3 rounded-3" alt="">
+      <p id="modalText" class="mb-0" style="letter-spacing:1px;"></p>
     </div>
   </div>
 </div>
@@ -98,128 +98,110 @@
   <section class="works-grid">
 
     <!-- Portraits 人像 -->
-    <a href="#" class="work-item portraits">
-      <img src="uploads/h1.jpg" alt="hj01">
-      <div class="work-info">
-        <span class="work-title">Lifestyle Portraits⭐</span>
-      </div>
-    </a>
+    <div class="work-item portraits"
+       data-img="uploads/h1.jpg"
+       data-text="Lifestyle Portraits ⭐">
+    <img src="uploads/h1.jpg" alt="">
+    </div>
   
-    <a href="#" class="work-item portraits">
-      <img src="uploads/h2.jpg" alt="hj02">
-      <div class="work-info">
-        <span class="work-title">Quiet Moments⭐</span>
-      </div>
-    </a>
+    <div class="work-item portraits"
+       data-img="uploads/h1.jpg"
+       data-text="Lifestyle Portraits ⭐">
+    <img src="uploads/h2.jpg" alt="">
+    </div>
 
-    <a href="#" class="work-item portraits">
-      <img src="uploads/h3.jpg" alt="hj03">
-      <div class="work-info">
-        <span class="work-title">Folds of Light and Shadow⭐</span>
-      </div>
-    </a>
+    <div class="work-item portraits"
+       data-img="uploads/h1.jpg"
+       data-text="Lifestyle Portraits ⭐">
+    <img src="uploads/h3.jpg" alt="">
+    </div>
   
     <!-- Landscape 風景 -->
-    <a href="#" class="work-item landscape">
-      <img src="uploads/house.jpg" alt="house">
-      <div class="work-info">
-        <span class="work-title">former times🏡</span>
-      </div>
-    </a>
+    <div class="work-item landscape"
+       data-img="uploads/house.jpg"
+       data-text="Former Times 🏡">
+    <img src="uploads/house.jpg" alt="">
+    </div>
 
-    <a href="#" class="work-item landscape">
-      <img src="uploads/block.jpg" alt="block">
-      <div class="work-info">
-        <span class="work-title">Aged Geometry🏡</span>
-      </div>
-    </a>
+    <div class="work-item landscape"
+       data-img="uploads/house.jpg"
+       data-text="Former Times 🏡">
+    <img src="uploads/block.jpg" alt="">
+    </div>
 
-    <a href="#" class="work-item landscape">
-      <img src="uploads/blue.jpg" alt="blue">
-      <div class="work-info">
-        <span class="work-title">Overexposed Memories🌊</span>
-      </div>
-    </a>
+    <div class="work-item landscape"
+       data-img="uploads/house.jpg"
+       data-text="Former Times 🏡">
+    <img src="uploads/blue.jpg" alt="">
+    </div>
 
-    <a href="#" class="work-item landscape">
-      <img src="uploads/fall.jpg" alt="fall">
-      <div class="work-info">
-        <span class="work-title">Seoul-ful Autumn🍁</span>
-      </div>
-    </a>
+    <div class="work-item landscape"
+       data-img="uploads/house.jpg"
+       data-text="Former Times 🏡">
+    <img src="uploads/fall.jpg" alt="">
+    </div>
 
-    <a href="#" class="work-item landscape">
-      <img src="uploads/flower.jpg" alt="flower">
-      <div class="work-info">
-        <span class="work-title"></span>
-      </div>
-    </a>
+    <div class="work-item landscape"
+       data-img="uploads/house.jpg"
+       data-text="Former Times 🏡">
+    <img src="uploads/flower.jpg" alt="">
+    </div>
 
-    <a href="#" class="work-item landscape">
-      <img src="uploads/pink.jpg" alt="pink">
-      <div class="work-info">
-        <span class="work-title"></span>
-      </div>
-    </a>
+    <div class="work-item landscape"
+       data-img="uploads/house.jpg"
+       data-text="Former Times 🏡">
+    <img src="uploads/pink.jpg" alt="">
+    </div>
 
-    <a href="#" class="work-item landscape">
-      <img src="uploads/tree.jpg" alt="tree">
-      <div class="work-info">
-        <span class="work-title"></span>
-      </div>
-    </a>
+    <div class="work-item landscape"
+       data-img="uploads/house.jpg"
+       data-text="Former Times 🏡">
+    <img src="uploads/tree.jpg" alt="">
+    </div>
 
-
-
-  
     <!-- Sky 天空 -->
-    <a href="#" class="work-item sky">
-      <img src="uploads/sky.jpg" alt="Sky">
-      <div class="work-info">
-        <span class="work-title">Intersected Sky☁️</span>
-      </div>
-    </a>
+    <div class="work-item sky"
+       data-img="uploads/house.jpg"
+       data-text="Former Times 🏡">
+    <img src="uploads/sky.jpg" alt="">
+    </div>
 
-    <a href="#" class="work-item sky">
-      <img src="uploads/sky2.jpg" alt="Sky">
-      <div class="work-info">
-        <span class="work-title">Beyond the Perimeter☁️</span>
-      </div>
-    </a>
+    <div class="work-item sky"
+       data-img="uploads/house.jpg"
+       data-text="Former Times 🏡">
+    <img src="uploads/sky2.jpg" alt="">
+    </div>
 
     <!-- Sea 海洋 -->
-    <a href="#" class="work-item sea">
-      <img src="uploads/sea.jpg" alt="Sea">
-      <div class="work-info">
-        <span class="work-title">Under the Ripple🐟</span>
-      </div>
-    </a>
+    <div class="work-item sea"
+       data-img="uploads/house.jpg"
+       data-text="Former Times 🏡">
+    <img src="uploads/sea.jpg" alt="">
+    </div>
 
-    <a href="#" class="work-item sea">
-      <img src="uploads/water.jpg" alt="Sea02">
-      <div class="work-info">
-        <span class="work-title">Half-Awake by the Pond🌊</span>
-      </div>
-    </a>
+    <div class="work-item sea"
+       data-img="uploads/house.jpg"
+       data-text="Former Times 🏡">
+    <img src="uploads/water.jpg" alt="">
+    </div>
 
-    <a href="#" class="work-item sea">
-      <img src="uploads/boat.jpg" alt="Sea03">
-      <div class="work-info">
-        <span class="work-title">Dwelling in the Azure🌊</span>
-      </div>
-    </a>
+    <div class="work-item sea"
+       data-img="uploads/house.jpg"
+       data-text="Former Times 🏡">
+    <img src="uploads/boat.jpg" alt="">
+    </div>
 
-    <a href="#" class="work-item sea">
-      <img src="uploads/shine.jpg" alt="Sea02">
-      <div class="work-info">
-        <span class="work-title">The Crack of Light🌊</span>
-      </div>
-    </a>
+    <div class="work-item sea"
+       data-img="uploads/house.jpg"
+       data-text="Former Times 🏡">
+    <img src="uploads/shine.jpg" alt="">
+    </div>
   
   </section>
   
  
   <!-- JS動態 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/gallery.js"></script>
 
 

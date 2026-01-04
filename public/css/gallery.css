@@ -177,13 +177,8 @@
   overflow: hidden;
   border-radius: 16px;
 
-  display: none; /* JS 控制 */
+  cursor: pointer; /* 點圖片會放大顯示 */
   background-color: #111;
-}
-
-/* 顯示 */
-.work-item.show {
-  display: block;
 }
 
 /* 圖片：保留原比例 */
