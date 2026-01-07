@@ -1,4 +1,4 @@
-/* ------------------- Navbar ------------------- */
+/*Navbar*/
 .site-header {
   position: fixed;
   top: 0;
@@ -55,12 +55,6 @@
   letter-spacing: 1px;
   line-height: 1;
 }
-
-  
-  /* =========================
-     Gallery Page - Works
-     ========================= */
-  
   /* 秋天咖啡色系 */
   :root {
     --bg-coffee: #3B2A23;
@@ -98,7 +92,7 @@
     max-width: 480px;
   }
 
-/* ===== 分類按鈕 ===== */
+/* 分類按鈕 */
 
 .works-filter {
   display: flex;
@@ -160,14 +154,13 @@
 }
 
 /* 作品 */
-
 .works-grid {
   margin-top: 80px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 32px;
 
-  align-items: start; /* 自動調整，按照圖片直橫 */
+  align-items: start; /* 圖片自動調整大小  */
 }
 
 
@@ -181,11 +174,15 @@
   background-color: #111;
 }
 
-/* 圖片：保留原比例 */
-.work-item img {
-  width: 100%;
-  height: auto;        
+/* 圖片保留原比例 */
+.work-item img {        
   display: block;
+  width: 100%;
+  height: 120%;          
+  object-fit: cover;
+  transform: translateY(0);
+  transition: transform 0.1s linear;
+  will-change: transform;
 }
 
 /*hover*/
@@ -200,15 +197,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-
   padding: 14px 16px;
-
   background: linear-gradient(
     to top,
     rgba(0,0,0,0.6),
     rgba(0,0,0,0)
   );
-
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -222,6 +216,45 @@
   color: #fff;
   letter-spacing: 1px;
 }
+
+/* Scroll Parallax Animation */
+/* 初始狀態 */
+.scroll-img {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(.22,.61,.36,1);
+  will-change: transform, opacity;
+}
+
+/* 從左滑入 */
+.scroll-img.from-left {
+  transform: translateX(-120px);
+}
+
+/* 從右滑入 */
+.scroll-img.from-right {
+  transform: translateX(120px);
+}
+
+/* 顯示時 */
+.scroll-img.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 📱 手機：滑動距離小一點 */
+@media (max-width: 768px) {
+  .scroll-img.from-left {
+    transform: translateX(-60px);
+  }
+
+  .scroll-img.from-right {
+    transform: translateX(60px);
+  }
+}
+
 
 
 
