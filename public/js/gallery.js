@@ -43,3 +43,12 @@
       modal.show();
     });
   });
+
+  /*判斷橫向圖片*/
+  document.querySelectorAll('.work-item img').forEach(img => {
+    img.addEventListener('load', () => {
+      if (img.naturalWidth > img.naturalHeight) {
+        img.parentElement.classList.add('horizontal');
+      }
+    });
+  });
