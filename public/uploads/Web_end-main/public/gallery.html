@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>作品集 | Hikari Photography</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/main_end.css">
+  <link rel="stylesheet" href="css/gallery.css">
+</head>
+
+<!-- 作品放大 -->
+<div class="modal fade" id="workModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+    <div class="modal-content text-center p-4 bg-dark text-white">
+      <img id="modalImage" src="" class="mb-3 rounded-3" alt="">
+      <p id="modalText" class="mb-0" style="letter-spacing:1px;"></p>
+    </div>
+  </div>
+</div>
+
+
+<body class="gallery-page">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-white fixed-top shadow-sm">
+    <div class="container-fluid">
+
+        <!-- 導覽列的文字 -->
+        <a class="navbar-brand d-flex flex-column fw-bold" style="line-height:1.3; font-size: 1.25rem;" href="main_end.html">
+            <span style="color:#8B5A3C;">
+                光の間 🍁
+            </span>
+            <small class="fw-normal" style="font-size:11px; letter-spacing:1.5px; color:#8B5A3C;">
+                Hikari Photography
+            </small>
+
+            <li class="nav-item">
+              <a class="nav-link" href="main_end.html"></a>
+            </li>
+      </a>
+
+        <li class="nav-item">
+          <a class="nav-link" href="main_end.html"></a>
+        </li>
+
+      <div class="ms-auto d-flex align-items-center gap-3">
+        <button class="navbar-toggler" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 🔹 Hero 區 -->
+  <section class="works-hero container">
+    <h1>
+      Featured<br>
+      <span>Works</span>
+    </h1>
+
+    <p class="works-desc">
+      捕捉光影之間，留下溫度的片刻
+    </p>
+
+    <!-- 分類按鈕 -->
+    <div class="works-filter">
+
+      <button class="filter-btn active" data-filter="portraits">
+        <span class="filter-title">Portraits</span>
+        <span class="filter-desc">Self in everyday light.</span>
+      </button>
+    
+      <button class="filter-btn" data-filter="landscape">
+        <span class="filter-title">Landscape</span>
+        <span class="filter-desc">Places I pass.</span>
+      </button>
+    
+      <button class="filter-btn" data-filter="sky">
+        <span class="filter-title">Sky</span>
+        <span class="filter-desc">Above my day.</span>
+      </button>
+    
+      <button class="filter-btn" data-filter="sea">
+        <span class="filter-title">Sea</span>
+        <span class="filter-desc">Stillness.</span>
+      </button>
+
+      <button class="filter-btn" data-filter="Ru">
+        <span class="filter-title">Ru</span>
+        <span class="filter-desc">myself</span>
+      </button>
+    
+    </div>
+    
+    
+
+  <!-- 🔹作品照片區 -->
+  <section class="works-grid">
+
+    <!-- 人像 -->
+    <div class="work-item portraits scroll-img from-left"
+       data-img="uploads/h1.jpg"
+       data-text="Lifestyle Portraits ⭐">
+    <img src="uploads/h1.jpg" alt="">
+    </div>
+  
+    <div class="work-item portraits scroll-img from-right"
+       data-img="uploads/h2.jpg"
+       data-text="Anonymous Afternoon⭐">
+    <img src="uploads/h2.jpg" alt="">
+    </div>
+
+    <div class="work-item portraits scroll-img from-left"
+       data-img="uploads/h3.jpg"
+       data-text="Folds of Light and Shadow⭐">
+    <img src="uploads/h3.jpg" alt="">
+    </div>
+
+    <div class="work-item portraits scroll-img from-right"
+       data-img="uploads/Ming7.jpg"
+       data-text="Soft Light Stories✨">
+    <img src="uploads/Ming7.jpg" alt="">
+    </div>
+
+    <div class="work-item portraits scroll-img from-left"
+       data-img="uploads/Ming2.jpg"
+       data-text="Golden Hour Gaze✨">
+    <img src="uploads/Ming2.jpg" alt="">
+    </div>
+
+    <div class="work-item portraits scroll-img from-right"
+       data-img="uploads/Ming3.jpg"
+       data-text="Defining the Light✨">
+    <img src="uploads/Ming3.jpg" alt="">
+    </div>
+
+    <div class="work-item portraits scroll-img from-left"
+       data-img="uploads/Ming4.jpg"
+       data-text="Rockbound Solitude✨">
+    <img src="uploads/Ming4.jpg" alt="">
+    </div>
+
+    <div class="work-item portraits scroll-img from-right"
+       data-img="uploads/Ming5.jpg"
+       data-text="Casual Solitude✨">
+    <img src="uploads/Ming5.jpg" alt="">
+    </div>
+
+    <div class="work-item portraits scroll-img from-left"
+       data-img="uploads/Ming6.jpg"
+       data-text="Azure Horizon Gaze✨">
+    <img src="uploads/Ming6.jpg" alt="">
+    </div>
+
+    <div class="work-item portraits scroll-img from-left"
+      data-img="uploads/Ming.jpg"
+      data-text="Still Life with Soul✨">
+   <img src="uploads/Ming.jpg" alt="">
+   </div>
+    
+   <div class="work-item portraits scroll-img from-left"
+      data-img="uploads/Ming8.jpg"
+      data-text="Radiant Profile✨">
+   <img src="uploads/Ming8.jpg" alt="">
+   </div>
+    
+    <!-- 風景 -->
+    <div class="work-item landscape scroll-img from-left"
+       data-img="uploads/fall.jpg"
+       data-text="Seoul-ful Autumn 🍁">
+    <img src="uploads/fall.jpg" alt="">
+    </div>
+
+    <div class="work-item landscape scroll-img from-right"
+       data-img="uploads/tree.jpg"
+       data-text="Life in Shadow🌿">
+    <img src="uploads/tree.jpg" alt="">
+    </div>
+
+    <div class="work-item landscape scroll-img from-left"
+       data-img="uploads/flower.jpg"
+       data-text="Lavender Whispers🪻">
+    <img src="uploads/flower.jpg" alt="">
+    </div>
+
+    <div class="work-item landscape scroll-img from-right"
+       data-img="uploads/house.jpg"
+       data-text="Former Times 🏡">
+    <img src="uploads/house.jpg" alt="">
+    </div>
+
+    <div class="work-item landscape scroll-img from-left"
+       data-img="uploads/block.jpg"
+       data-text="The Ancestral Roof🌿">
+    <img src="uploads/block.jpg" alt="">
+    </div>
+
+    <div class="work-item landscape scroll-img from-left"
+       data-img="uploads/pink.jpg"
+       data-text="Blossom Castle Reverie🌸">
+    <img src="uploads/pink.jpg" alt="">
+    </div>
+
+    <div class="work-item landscape scroll-img from-left"
+       data-img="uploads/red.jpg"
+       data-text="Classic Brick Heritage🏡">
+    <img src="uploads/red.jpg" alt="">
+    </div>
+
+    <div class="work-item landscape scroll-img from-left"
+       data-img="uploads/gound.jpg"
+       data-text="Autumn’s Footprint🌿">
+    <img src="uploads/gound.jpg" alt="">
+    </div>
+
+
+    <!-- 天空 -->
+    <div class="work-item sky scroll-img from-left"
+       data-img="uploads/sky2.jpg"
+       data-text="The Blue Above the Rungs☁️">
+    <img src="uploads/sky2.jpg" alt="">
+    </div>
+
+    <div class="work-item sky scroll-img from-left"
+       data-img="uploads/moon.jpg"
+       data-text="Moonlight through Leaves☁️">
+    <img src="uploads/moon.jpg" alt="">
+    </div>
+
+    <div class="work-item sky scroll-img from-left"
+       data-img="uploads/blue3.jpg"
+       data-text="The Arch on the Edge☁️">
+    <img src="uploads/blue3.jpg" alt="">
+    </div>
+
+    <div class="work-item sky scroll-img from-right"
+       data-img="uploads/sky.jpg"
+       data-text="Urban Fringees☁️">
+    <img src="uploads/sky.jpg" alt="">
+    </div>
+
+    <div class="work-item sky scroll-img from-left"
+       data-img="uploads/pink2.jpg"
+       data-text="Cotton Candy Twilight🎀">
+    <img src="uploads/pink2.jpg" alt="">
+    </div>
+
+    <div class="work-item sky scroll-img from-left"
+       data-img="uploads/sky3.jpg"
+       data-text="Between the Shadows🚅">
+    <img src="uploads/sky3.jpg" alt="">
+    </div>
+
+    <div class="work-item sky scroll-img from-left"
+       data-img="uploads/sky4.jpg"
+       data-text="A Breath of Blue☁️">
+    <img src="uploads/sky4.jpg" alt="">
+    </div>
+
+    <div class="work-item sky scroll-img from-left"
+       data-img="uploads/bling.jpg"
+       data-text="Transient Sparkles🌟">
+    <img src="uploads/bling.jpg" alt="">
+    </div>
+
+    <div class="work-item sky scroll-img from-left"
+       data-img="uploads/blue2.jpg"
+       data-text="Summer Rooftops☁️">
+    <img src="uploads/blue2.jpg" alt="">
+    </div>
+
+    
+    <!-- 海洋 -->
+    <div class="work-item sea scroll-img from-left"
+       data-img="uploads/sea.jpg"
+       data-text="Dialogue of Shadows🌊">
+    <img src="uploads/sea.jpg" alt="">
+    </div>
+
+    <div class="work-item sea scroll-img from-left"
+       data-img="uploads/river'.jpg"
+       data-text="Between Rock and River🐚">
+    <img src="uploads/river'.jpg" alt="">
+    </div>
+
+    <div class="work-item sea scroll-img from-left"
+       data-img="uploads/green.jpg"
+       data-text="Where Green Meets Blue🌿">
+    <img src="uploads/green.jpg" alt="">
+    </div>
+
+    <div class="work-item sea scroll-img from-right"
+       data-img="uploads/water.jpg"
+       data-text="Floating Structures🌊">
+    <img src="uploads/water.jpg" alt="">
+    </div>
+
+    <div class="work-item sea scroll-img from-left"
+       data-img="uploads/boat.jpg"
+       data-text="Dwelling in the Azure🌊">
+    <img src="uploads/boat.jpg" alt="">
+    </div>
+
+    <div class="work-item sea scroll-img from-right"
+       data-img="uploads/shine.jpg"
+       data-text="Twinkling on the Other Side⭐">
+    <img src="uploads/shine.jpg" alt="">
+    </div>
+
+    <div class="work-item sea scroll-img from-right"
+       data-img="uploads/river.jpg"
+       data-text="The Pulse of the River🌊">
+    <img src="uploads/river.jpg" alt="">
+    </div>
+
+    
+    <div class="work-item sea scroll-img from-right"
+       data-img="uploads/blue.jpg"
+       data-text="Greetings from the Lake🌊">
+    <img src="uploads/blue.jpg" alt="">
+    </div>
+
+    <!-- RU -->
+    <div class="work-item Ru scroll-img from-right"
+      data-img="uploads/rock.jpg"
+      data-text="Eco-Geometry🗿">
+    <img src="uploads/rock.jpg" alt="">
+    </div>
+
+    <div class="work-item Ru scroll-img from-right"
+      data-img="uploads/tree2.jpg"
+      data-text="The Timeless Pavilion🌳">
+    <img src="uploads/tree2.jpg" alt="">
+    </div>
+
+    <div class="work-item Ru scroll-img from-right"
+      data-img="uploads/tree4.jpg"
+      data-text="White Stripes on Green🍃">
+    <img src="uploads/tree4.jpg" alt="">
+    </div>
+
+    <div class="work-item Ru scroll-img from-right"
+      data-img="uploads/tree3.jpg"
+      data-text="Weeping Willow Whispers🌳">
+    <img src="uploads/tree3.jpg" alt="">
+    </div>
+
+    <div class="work-item Ru scroll-img from-right"
+      data-img="uploads/camera.jpg"
+      data-text="The Eye of the Storyteller📸">
+    <img src="uploads/camera.jpg" alt="">
+    </div>
+
+    <div class="work-item Ru scroll-img from-right"
+      data-img="uploads/ccd.jpg"
+      data-text="Frame within a Frame📸">
+    <img src="uploads/ccd.jpg" alt="">
+    </div>
+
+    <div class="work-item Ru scroll-img from-right"
+      data-img="uploads/R.jpg"
+      data-text="Mirror Moments📸">
+    <img src="uploads/R.jpg" alt="">
+    </div>
+
+    <div class="work-item Ru scroll-img from-right"
+      data-img="uploads/Ru.jpg"
+      data-text="Cozy Afternoon☀️">
+    <img src="uploads/Ru.jpg" alt="">
+    </div>
+
+  
+  </section>
+  
+ 
+  <!-- JS動態 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/parallax.js"></script>
+
+
+</body>
+</html>
