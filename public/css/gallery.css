@@ -101,21 +101,18 @@
   flex-wrap: wrap;
 }
 
-/* 按鈕本體 */
+/* 按鈕 */
 .filter-btn {
   background: transparent;
   border: 1px solid var(--border-soft);
   border-radius: 999px;
   padding: 14px 28px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
-
   text-align: center;
   cursor: pointer;
-
   transition: all 0.25s ease;
 }
 
@@ -170,8 +167,7 @@
   overflow: hidden;
   border-radius: 16px;
 
-  cursor: pointer; /* 點圖片會放大顯示 */
-  background-color: #111;
+  cursor: pointer; /* 點圖片放大顯示 */
   grid-column: span 2;  
 }
 
@@ -201,8 +197,8 @@
   padding: 14px 16px;
   background: linear-gradient(
     to top,
-    rgba(0,0,0,0.6),
-    rgba(0,0,0,0)
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0)
   );
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -223,7 +219,7 @@
   grid-column: span 3;
 }
 
-/* Scroll Parallax Animation */
+/* 滾動視差動畫 */
 /* 初始狀態 */
 .scroll-img {
   opacity: 0;
@@ -257,11 +253,11 @@
   }
 
   .work-item {
-    grid-column: span 2; /* 一排 2 張 */
+    grid-column: span 2;
   }
 
   .work-item.horizontal {
-    grid-column: span 4; /* 橫圖全寬 */
+    grid-column: span 4;
   }
 }
 
@@ -273,14 +269,45 @@
 
   .work-item,
   .work-item.horizontal {
-    grid-column: span 2; /* 一排 1 張 */
+    grid-column: span 2; 
   }
 }
 
 /* 圖片內的文字 */
 #modalText {
-  color: #f5cfa0;   
+  color: #f5cfa0;  
+  text-align: center;
+  margin-top: 16px;
 }
+
+/* 放大圖片 */
+#modalImage {
+  max-width: 85vw;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+#workModal .modal-content {
+  background: transparent;
+  border: none;
+  margin: 0 auto;
+  max-width: 90vw;
+  max-height: 100vh;
+  width: auto;
+  height: auto;
+  padding: 0;
+  border-radius: 16px;
+}
+
+
+
+
+
+
 
 
 
